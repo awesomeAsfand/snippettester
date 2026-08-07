@@ -11,7 +11,7 @@
 
 const MAX_BYTES = 2_500_000;
 const FETCH_TIMEOUT_MS = 12_000;
-const UA = 'SnippetTesterBot/1.0 (+https://www.snippettester.com/about)';
+const UA = 'SnippetTesterBot/1.0 (+https://snippettester.com/about)';
 
 const AI_AGENTS = [
   'GPTBot',

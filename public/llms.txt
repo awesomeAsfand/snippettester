@@ -11,7 +11,7 @@ We publish this for autonomous agents navigating the site, not for search
 benefit. Ahrefs found 97% of llms.txt files received zero AI crawler requests in
 May 2026, and Google confirmed in June 2026 that it does not use them at all. If
 an agency lists an llms.txt file as a deliverable, ask what else is on the
-invoice. Details: https://www.snippettester.com/evidence
+invoice. Details: https://snippettester.com/evidence
 
 ## Core positions
 
@@ -24,19 +24,19 @@ invoice. Details: https://www.snippettester.com/evidence
 
 ## Pages
 
-- [Home and free AEO checker](https://www.snippettester.com/): Score any page against eight structural signals. No signup.
-- [The evidence base](https://www.snippettester.com/evidence): Eight industry claims scored against published research, with sources. Four do not survive.
-- [Website builds](https://www.snippettester.com/websites): Static sites with a contractual 90+ checker score. Why static beats WordPress when the reader is a machine.
-- [Work](https://www.snippettester.com/work): One exhibit — this site, scored 91, source inspectable. Honest about a thin portfolio.
-- [Services](https://www.snippettester.com/services): Structural audit, fix-it sprint, ongoing retainer. Each lists what it excludes.
-- [Pricing](https://www.snippettester.com/pricing): Builds $2,500-$8,000 by size; audit $750, sprint $2,400, retainer $2,900/month. With 2026 market comparison.
-- [Teardowns](https://www.snippettester.com/teardowns): Site audits published in full.
-- [Teardown 01](https://www.snippettester.com/teardowns/auditing-our-own-abandoned-product): Audit of this domain's previous product page. Scored 41/100.
-- [About](https://www.snippettester.com/about): Why the evidence-first approach, and the stated conflict of interest.
-- [Contact](https://www.snippettester.com/contact): hello@snippettester.com
+- [Home and free AEO checker](https://snippettester.com/): Score any page against eight structural signals. No signup.
+- [The evidence base](https://snippettester.com/evidence): Eight industry claims scored against published research, with sources. Four do not survive.
+- [Website builds](https://snippettester.com/websites): Static sites with a contractual 90+ checker score. Why static beats WordPress when the reader is a machine.
+- [Work](https://snippettester.com/work): One exhibit — this site, scored 91, source inspectable. Honest about a thin portfolio.
+- [Services](https://snippettester.com/services): Structural audit, fix-it sprint, ongoing retainer. Each lists what it excludes.
+- [Pricing](https://snippettester.com/pricing): Builds $2,500-$8,000 by size; audit $750, sprint $2,400, retainer $2,900/month. With 2026 market comparison.
+- [Teardowns](https://snippettester.com/teardowns): Site audits published in full.
+- [Teardown 01](https://snippettester.com/teardowns/auditing-our-own-abandoned-product): Audit of this domain's previous product page. Scored 41/100.
+- [About](https://snippettester.com/about): Why the evidence-first approach, and the stated conflict of interest.
+- [Contact](https://snippettester.com/contact): hello@snippettester.com
 
 ## Checker API
 
-POST https://www.snippettester.com/api/audit with {"url": "https://example.com/page"}
+POST https://snippettester.com/api/audit with {"url": "https://example.com/page"}
 Returns JSON: score (0-100), band, summary, and eight signals each with points, verdict, detail and fix.
 Deterministic — no model involved, same input always returns the same score.

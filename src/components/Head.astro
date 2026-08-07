@@ -7,7 +7,7 @@ export interface Props {
   noindex?: boolean;
 }
 const { title, description, path, schema = [], noindex = false } = Astro.props;
-const site = 'https://www.snippettester.com';
+const site = 'https://snippettester.com';
 const canonical = new URL(path, site).href;
 const fullTitle = path === '/' ? title : `${title} — Snippet Tester`;
 ---

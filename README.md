@@ -31,7 +31,7 @@ site and runs the real Worker runtime locally.
    repository.
 3. Build command `npm run build`, deploy command `npx wrangler deploy`.
 4. Cloudflare reads `wrangler.jsonc` for everything else.
-5. Add `snippettester.com` and `www.snippettester.com` as custom domains.
+5. Add `snippettester.com` and `snippettester.com` as custom domains.
 
 Or deploy straight from your machine with `npm run deploy`.
 
