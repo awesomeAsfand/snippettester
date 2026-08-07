@@ -38,7 +38,17 @@ const json = (body, status = 200) =>
   });
 
 export async function onRequest(context) {
-  const { request } = context;
+  const { request, env } = context;
+
+  // A Worker cannot fetch its own zone over the network — the request loops
+  // back through the edge and stalls. So when the target is this same host,
+  // read it from the static assets binding instead. Without this, the checker
+  // is the one site on the internet it cannot check.
+  const selfHost = (() => {
+    try { return new URL(request.url).hostname; } catch { return null; }
+  })();
+  const assets = env?.ASSETS ?? null;
+  const get = (url, ms) => fetchWithTimeout(url, ms, selfHost, assets);
 
   if (request.method === 'OPTIONS') {
     return new Response(null, {
@@ -71,7 +81,7 @@ export async function onRequest(context) {
 
   let html, finalUrl, status;
   try {
-    const res = await fetchWithTimeout(target.href);
+    const res = await get(target.href);
     status = res.status;
     finalUrl = res.url || target.href;
     if (!res.ok) {
@@ -92,7 +102,7 @@ export async function onRequest(context) {
     );
   }
 
-  const robots = await fetchRobots(target.origin);
+  const robots = await fetchRobots(target.origin, get);
   const signals = scoreAll(html, robots);
   const score = signals.reduce((n, s) => n + s.points, 0);
   const max = signals.reduce((n, s) => n + s.max, 0);
@@ -127,7 +137,19 @@ function normaliseUrl(input) {
   return u;
 }
 
-async function fetchWithTimeout(url, ms = FETCH_TIMEOUT_MS) {
+async function fetchWithTimeout(url, ms = FETCH_TIMEOUT_MS, selfHost = null, assets = null) {
+  // Same-origin targets come from the assets binding, not the network.
+  // See the note in onRequest — a Worker fetching its own zone deadlocks.
+  if (selfHost && assets) {
+    try {
+      if (new URL(url).hostname === selfHost) {
+        return await assets.fetch(new Request(url, { headers: { 'user-agent': UA } }));
+      }
+    } catch {
+      // fall through to a normal network fetch
+    }
+  }
+
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
@@ -146,9 +168,9 @@ async function readCapped(res) {
   return text.length > MAX_BYTES ? text.slice(0, MAX_BYTES) : text;
 }
 
-async function fetchRobots(origin) {
+async function fetchRobots(origin, get = fetchWithTimeout) {
   try {
-    const res = await fetchWithTimeout(new URL('/robots.txt', origin).href, 6000);
+    const res = await get(new URL('/robots.txt', origin).href, 6000);
     if (!res.ok) return { found: false, text: '' };
     const text = (await res.text()).slice(0, 120_000);
     return { found: true, text };

@@ -47,6 +47,13 @@ const faq = {
 };
 
 const evidenceHighlights = claims.filter((c) => ['ok', 'bad'].includes(c.verdict)).slice(0, 4);
+
+// First two sentences of a finding, without doubling the full stop when the
+// second sentence already ends in one.
+function summarise(text) {
+  const two = text.split('. ').slice(0, 2).join('. ').trim();
+  return /[.!?]$/.test(two) ? two : two + '.';
+}
 ---
 <Base title={title} description={description} schema={[faq]}>
   <section class="section" style="padding-bottom: 2.5rem;">
@@ -152,7 +159,7 @@ const evidenceHighlights = claims.filter((c) => ['ok', 'bad'].includes(c.verdict
               <tr>
                 <td style="min-width: 15rem;">{c.claim}</td>
                 <td><span class={`badge badge--${c.verdict}`}>{c.verdictLabel}</span></td>
-                <td>{c.finding.split('. ').slice(0, 2).join('. ') + '.'}</td>
+                <td>{summarise(c.finding)}</td>
               </tr>
             ))}
           </tbody>
