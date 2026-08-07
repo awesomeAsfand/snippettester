@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Contact';
+const description =
+  'Email hello@snippettester.com. Tell me the URL and what you want to happen. You get a reply with a real opinion, not a discovery call invitation.';
+---
+<Base title={title} description={description}>
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid--2" style="align-items: start; gap: 2.5rem;">
+        <div class="prose">
+          <p class="eyebrow">Contact</p>
+          <h1>Email me. There is no form and no funnel.</h1>
+          <p class="lede">
+            <a href="mailto:hello@snippettester.com">hello@snippettester.com</a>
+          </p>
+          <p>
+            Send the URL and one line about what you want to happen. You will get a reply with an
+            actual opinion — including, sometimes, that you do not need to hire anyone.
+          </p>
+          <p>
+            I reply within one working day. If I am not the right fit I will say so in the first reply
+            rather than after a call.
+          </p>
+
+          <h2 style="margin-top: 2.5rem;">What to put in the email</h2>
+          <ul class="quiet-list">
+            <li>The URL of the page or site</li>
+            <li>Roughly what your traffic looks like — mostly blog and guides, or mostly product and service pages</li>
+            <li>What triggered this: a traffic drop, a rebuild, a competitor showing up in AI answers</li>
+            <li>Whether you want diagnosis, implementation, or ongoing help</li>
+          </ul>
+          <p class="small">
+            None of it is required. A bare URL is enough to get a useful reply.
+          </p>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th scope="col">What you want</th><th scope="col">Cost</th><th scope="col">Reply time</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A published teardown of your site</td><td class="num">$0</td><td>2-3 days</td></tr>
+                <tr><td>An opinion on whether you have a problem</td><td class="num">$0</td><td>1 working day</td></tr>
+                <tr><td>Structural audit</td><td class="num">$750</td><td>1 working day</td></tr>
+                <tr><td>Fix-it sprint</td><td class="num">$2,400</td><td>1 working day</td></tr>
+                <tr><td>Ongoing retainer</td><td class="num">$2,900/mo</td><td>1 working day</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="card card--flag">
+            <h3>Free teardown</h3>
+            <p>
+              I audit your site properly and publish the result, whatever it says. Free. The site has
+              to be real and in use.
+            </p>
+            <p><a href="mailto:hello@snippettester.com?subject=Teardown%20request">Request a teardown →</a></p>
+          </div>
+          <div class="card">
+            <h3>Engagement enquiry</h3>
+            <p>
+              Audit at $750, sprint at $2,400, retainer at $2,900 per month. Rates are published, so
+              there is nothing to negotiate and no reason for a pricing call.
+            </p>
+            <p><a href="/pricing">See what each includes →</a></p>
+          </div>
+          <div class="card">
+            <h3>Correcting the evidence page</h3>
+            <p>
+              If you have a study that contradicts something on the evidence base, send it. Those
+              emails get answered first.
+            </p>
+            <p><a href="/evidence">Read the evidence base →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

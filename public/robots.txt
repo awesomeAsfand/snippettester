@@ -1,0 +1,30 @@
+# snippettester.com
+# Everything is open, on purpose. Blocking an answer engine removes you from
+# its answers, which is a legitimate choice but rarely the one people mean to make.
+
+User-agent: *
+Allow: /
+
+# Named explicitly so the intent is unambiguous rather than merely default.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.snippettester.com/sitemap-index.xml

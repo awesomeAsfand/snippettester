@@ -1,0 +1,310 @@
+---
+import Base from '../layouts/Base.astro';
+import Checker from '../components/Checker.astro';
+import { claims } from '../data/evidence.js';
+
+const title = 'Snippet Tester — evidence-led SEO and answer engine optimisation';
+const description =
+  'Free AEO readiness checker plus SEO and answer-engine work argued from published research. We show you the studies first, including the ones that say you do not need us.';
+
+const faq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is answer engine optimisation (AEO)?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Answer engine optimisation is the practice of structuring a page so that AI systems — Google AI Overviews, ChatGPT, Perplexity, Copilot — quote it and credit it as the source. Traditional SEO competes for a click on a results page. AEO competes for the sentence the model produces.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is AI search actually taking my traffic?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Not in the way most agencies claim. All AI chatbots combined send roughly 0.29% of search referrals while Google still sends about 87.6%. The real loss is inside Google: AI Overviews answer the query without sending a click, cutting click-through rates by between 15% and 61% depending on the study.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need an llms.txt file?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Almost certainly not for search. Ahrefs found 97% of llms.txt files received zero AI crawler requests in May 2026, and Google confirmed in June 2026 that it does not use them. It is worth ten minutes as agent-readable documentation, but it is not an SEO deliverable.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does AEO work cost?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Market rates in 2026 run from $2,000 to $15,000 per month. Snippet Tester publishes its own rates: a one-off audit at $750, a fix-it engagement at $2,400, and an ongoing retainer at $2,900 per month.',
+      },
+    },
+  ],
+};
+
+const evidenceHighlights = claims.filter((c) => ['ok', 'bad'].includes(c.verdict)).slice(0, 4);
+---
+<Base title={title} description={description} schema={[faq]}>
+  <section class="section" style="padding-bottom: 2.5rem;">
+    <div class="wrap">
+      <div class="grid" style="grid-template-columns: 1fr; gap: 2.75rem;">
+        <div class="prose">
+          <p class="eyebrow">SEO &amp; answer engine optimisation</p>
+          <h1>We build websites that get found, and fix the ones that don't.</h1>
+          <p class="lede">
+            AI Overviews really are taking your clicks — between 15% and 61% of them, depending on
+            whose study you read. Almost nothing being sold as the fix has evidence behind it. So
+            start with the number rather than the pitch: run the free check on your current site and
+            find out whether you have a problem at all.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href="#checker">Check a page free</a>
+            <a class="btn btn--ghost" href="/websites">See how we build</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill">No signup</span>
+            <span class="pill">Published pricing</span>
+            <span class="pill">Every build scores 90+</span>
+          </div>
+        </div>
+
+        <Checker />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="prose">
+        <p class="eyebrow">What the numbers actually say</p>
+        <h2>The threat is real. The pitch you have been hearing is not.</h2>
+        <p>
+          Two things are true at once, and the industry only tells you the first. Yes, generative
+          search is changing how people get answers. No, they are not leaving Google to do it.
+        </p>
+      </div>
+
+      <div class="stats" style="margin-top: 2rem;">
+        <div class="stat">
+          <span class="stat__n">0.29%</span>
+          <span class="stat__l">of search referrals come from all AI chatbots combined</span>
+          <span class="stat__s">Google: 87.6%</span>
+        </div>
+        <div class="stat">
+          <span class="stat__n">-15 to -61%</span>
+          <span class="stat__l">click-through rate impact when an AI Overview appears</span>
+          <span class="stat__s">Amsive · Pew · Seer</span>
+        </div>
+        <div class="stat">
+          <span class="stat__n">97%</span>
+          <span class="stat__l">of llms.txt files got zero AI crawler requests in May 2026</span>
+          <span class="stat__s">Ahrefs, 137k domains</span>
+        </div>
+      </div>
+
+      <p class="source-note" style="margin-top: 1rem;">
+        Sources:
+        <a href="https://technologychecker.io/blog/search-engine-market-share" rel="nofollow noopener" target="_blank">TechnologyChecker</a> ·
+        <a href="https://ahrefs.com/blog/ai-overviews-reduce-clicks/" rel="nofollow noopener" target="_blank">Ahrefs</a> ·
+        <a href="https://searchengineland.com/google-ai-overviews-ctr-recovery-study-475566" rel="nofollow noopener" target="_blank">Search Engine Land</a> ·
+        <a href="https://ppc.land/llms-txt-adoption-rises-8-8x-but-97-of-files-get-zero-ai-requests/" rel="nofollow noopener" target="_blank">PPC Land</a>
+      </p>
+
+      <blockquote style="max-width: var(--measure); margin-top: 2rem;">
+        <p>
+          &ldquo;llms.txt files are not required for Google Search.&rdquo;
+        </p>
+        <cite>Google, AI optimisation guidance, 15 June 2026 — three years into an industry selling them</cite>
+      </blockquote>
+
+      <div class="callout" style="max-width: var(--measure); margin-top: 2.25rem;">
+        <p>
+          <strong>Read that middle number carefully.</strong> The damage is happening inside Google,
+          not outside it. Which means the answer is not a new channel — it is making your pages the
+          thing Google quotes when it answers instead of you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="prose">
+        <p class="eyebrow">The evidence base</p>
+        <h2>Eight claims the AEO industry makes, scored against the research</h2>
+        <p>
+          We keep a public verdict on every popular claim in this category. Four of the eight do not
+          survive contact with the data — including one that is on most competitors' service pages.
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th scope="col">Claim</th><th scope="col">Verdict</th><th scope="col">What the data shows</th></tr>
+          </thead>
+          <tbody>
+            {evidenceHighlights.map((c) => (
+              <tr>
+                <td style="min-width: 15rem;">{c.claim}</td>
+                <td><span class={`badge badge--${c.verdict}`}>{c.verdictLabel}</span></td>
+                <td>{c.finding.split('. ').slice(0, 2).join('. ') + '.'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p><a href="/evidence">All eight claims, with sources and what to do about each →</a></p>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="prose" style="margin-bottom: 2rem;">
+        <p class="eyebrow">Two ways in</p>
+        <h2>Fix what you have, or replace it</h2>
+        <p>
+          Which one you need is a question with an actual answer, and the free checker gives it to you
+          before any money is discussed. Most sites are worth fixing. Some are not, and we will say so.
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Your situation</th>
+              <th scope="col">What you need</th>
+              <th scope="col">Starting point</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Site scores above 80</td>
+              <td>Nothing. Remaining gains are small</td>
+              <td>Keep the report, spend the money elsewhere</td>
+            </tr>
+            <tr>
+              <td>Site scores 50-80, structure is sound</td>
+              <td>Optimisation — schema, structure, copy shape</td>
+              <td><a href="/services">Audit or fix-it sprint</a></td>
+            </tr>
+            <tr>
+              <td>Site scores under 50, or renders client-side</td>
+              <td>A rebuild. Fixing costs more than replacing</td>
+              <td><a href="/websites">Website build</a></td>
+            </tr>
+            <tr>
+              <td>No site yet</td>
+              <td>A build done right the first time</td>
+              <td><a href="/websites">Website build</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid--3" style="margin-top: 2rem;">
+        <div class="card card--flag">
+          <h3>Build</h3>
+          <p class="small mono" style="color: var(--muted);">Static · scored before launch</p>
+          <p>
+            Websites that serve finished HTML, so crawlers that never run JavaScript still see
+            everything. Every build scores 90+ on the public checker, written into the contract.
+          </p>
+          <p><a href="/websites">How we build →</a></p>
+        </div>
+        <div class="card card--flag">
+          <h3>Optimise</h3>
+          <p class="small mono" style="color: var(--muted);">From $750</p>
+          <p>
+            Diagnosis of what is structurally wrong with the site you already have, and the fixes
+            made. Most sites do not need replacing.
+          </p>
+          <p><a href="/services">See engagements →</a></p>
+        </div>
+        <div class="card card--flag">
+          <h3>Or nothing</h3>
+          <p class="small mono" style="color: var(--muted);">Free · forever</p>
+          <p>
+            Run the checker, take the fix list, do it yourself. Plenty of people get what they need
+            here and leave, which is a fine outcome.
+          </p>
+          <p><a href="#checker">Check a page →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <p class="eyebrow">Frequently asked</p>
+      <h2>Straight answers</h2>
+      <div class="stack" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3>What is answer engine optimisation?</h3>
+          <p>
+            AEO is structuring a page so AI systems quote it and credit it. SEO competes for a click
+            on a results page; AEO competes for the sentence the model produces and the source it
+            names. The technical foundation is the same — crawlable, fast, well-structured pages.
+            What changes is that being ranked third is no longer the goal if the answer above you
+            never mentions you.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Is AI search actually taking my traffic?</h3>
+          <p>
+            Probably not the way you have been told. AI chatbots send about 0.29% of search
+            referrals. But if your traffic is informational content, AI Overviews trigger on up to
+            89% of those queries and take the click before it reaches you. If your traffic is
+            transactional, they trigger on 3-4% and you are largely fine. Which of those you are is
+            the first thing worth knowing.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Do I need an llms.txt file?</h3>
+          <p>
+            Almost certainly not. 97% of them received zero AI crawler requests in May 2026, and
+            Google confirmed in June 2026 that it does not use them for anything. Publish one if you
+            want — it is plausibly useful for autonomous agents. Do not pay anyone for it.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Why do you build static sites rather than WordPress?</h3>
+          <p>
+            Because AI crawlers do not execute JavaScript — analysis of over 500 million GPTBot
+            fetches found zero evidence of it. A static site serves finished HTML, so every crawler
+            gets the whole page. It is also faster, free to host, and has no plugin surface to be
+            hacked through. If you need five people publishing daily, WordPress is genuinely better
+            and we will tell you so.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Why would an agency publish evidence against its own services?</h3>
+          <p>
+            Because the category is saturated with fear-based pitches and nobody trusts them any
+            more. Publishing the inconvenient findings is the fastest available route to being
+            believed. It also means the work I do sell is work I can defend.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap prose" style="text-align: left;">
+      <h2>Start with the check. Decide about hiring afterwards.</h2>
+      <p class="lede">
+        It takes about eight seconds and asks for nothing but a URL. It will also tell you if the
+        answer is that you need nothing at all.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--accent" href="#checker">Run the free check</a>
+        <a class="btn btn--ghost" href="mailto:hello@snippettester.com">Email me directly</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,42 @@
+# Snippet Tester
+
+> We build websites that get found, and fix the ones that do not. Run by one
+> person. Free AEO readiness checker, audits published in public, rates published
+> on the site. Every site we build scores 90+ on our own public checker, written
+> into the contract.
+
+## An honest note about this file
+
+We publish this for autonomous agents navigating the site, not for search
+benefit. Ahrefs found 97% of llms.txt files received zero AI crawler requests in
+May 2026, and Google confirmed in June 2026 that it does not use them at all. If
+an agency lists an llms.txt file as a deliverable, ask what else is on the
+invoice. Details: https://www.snippettester.com/evidence
+
+## Core positions
+
+- All AI chatbots combined send roughly 0.29% of search referrals; Google sends about 87.6%.
+- Google AI Overviews reduce click-through rate by 15% to 61% depending on the study. This is the real problem.
+- Exposure is uneven: informational queries trigger AI Overviews up to 89% of the time, transactional queries 3-4%.
+- The interventions with the best evidence are structural: answer-first openings, facts in tables, cited figures, sequential headings.
+- AI crawlers do not execute JavaScript. Client-rendered React, Vue and Angular sites serve them an empty shell, which is why we build static.
+- Schema markup is contested — hygiene rather than leverage.
+
+## Pages
+
+- [Home and free AEO checker](https://www.snippettester.com/): Score any page against eight structural signals. No signup.
+- [The evidence base](https://www.snippettester.com/evidence): Eight industry claims scored against published research, with sources. Four do not survive.
+- [Website builds](https://www.snippettester.com/websites): Static sites with a contractual 90+ checker score. Why static beats WordPress when the reader is a machine.
+- [Work](https://www.snippettester.com/work): One exhibit — this site, scored 91, source inspectable. Honest about a thin portfolio.
+- [Services](https://www.snippettester.com/services): Structural audit, fix-it sprint, ongoing retainer. Each lists what it excludes.
+- [Pricing](https://www.snippettester.com/pricing): Builds $2,500-$8,000 by size; audit $750, sprint $2,400, retainer $2,900/month. With 2026 market comparison.
+- [Teardowns](https://www.snippettester.com/teardowns): Site audits published in full.
+- [Teardown 01](https://www.snippettester.com/teardowns/auditing-our-own-abandoned-product): Audit of this domain's previous product page. Scored 41/100.
+- [About](https://www.snippettester.com/about): Why the evidence-first approach, and the stated conflict of interest.
+- [Contact](https://www.snippettester.com/contact): hello@snippettester.com
+
+## Checker API
+
+POST https://www.snippettester.com/api/audit with {"url": "https://example.com/page"}
+Returns JSON: score (0-100), band, summary, and eight signals each with points, verdict, detail and fix.
+Deterministic — no model involved, same input always returns the same score.

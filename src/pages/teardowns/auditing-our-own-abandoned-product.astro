@@ -1,0 +1,217 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = 'Teardown 01: auditing our own abandoned product';
+const description =
+  'The first teardown is this domain. The old landing page had two H1s, eleven dead links, no structured data, no tables and one statistic on the whole page.';
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Teardown 01: tearing down our own abandoned product page',
+  description,
+  datePublished: '2026-07-30',
+  dateModified: '2026-07-30',
+  author: { '@id': 'https://www.snippettester.com/#org' },
+  publisher: { '@id': 'https://www.snippettester.com/#org' },
+  mainEntityOfPage: 'https://www.snippettester.com/teardowns/auditing-our-own-abandoned-product',
+};
+
+const findings = [
+  {
+    signal: 'Structured data',
+    score: '0 / 18',
+    verdict: 'bad',
+    found:
+      'No JSON-LD and no microdata anywhere in the document. The page had a full FAQ section — six questions with answers, correctly marked up as headings and paragraphs — and none of it was declared as FAQPage.',
+    fix:
+      'The content already existed in the right shape. Wrapping it in FAQPage plus an Organization block was maybe forty minutes of work for the single highest-value gap on the page.',
+  },
+  {
+    signal: 'Heading structure',
+    score: '6 / 15',
+    verdict: 'bad',
+    found:
+      'Two H1 elements: the brand wordmark in the header and the hero headline. Six question-form headings in the FAQ, which is genuinely good, undercut by a heading hierarchy that starts by contradicting itself.',
+    fix:
+      'The logo is not a heading. Make the wordmark a link containing an image or a span, leave the single H1 for the hero, and the whole document becomes parseable.',
+  },
+  {
+    signal: 'Extractable formats',
+    score: '4 / 14',
+    verdict: 'bad',
+    found:
+      'Not one table on the entire page. The pricing section compared three tiers across six features each — the most naturally tabular content imaginable — rendered as three stacked lists of bullet points.',
+    fix:
+      'Pricing comparisons belong in a table with header cells. This is the single most reliably extracted structure on the web and the page had zero of them.',
+  },
+  {
+    signal: 'Evidence density',
+    score: '2 / 14',
+    verdict: 'bad',
+    found:
+      'One statistic on the entire page: "12 sites already testing". No outbound links to anything, no citations, no quoted authority. Every claim was self-asserted.',
+    fix:
+      'A page about CTR optimisation that cites no CTR research is asking for trust it has not earned. Two or three cited figures would have changed the character of the whole page.',
+  },
+  {
+    signal: 'Answer-first opening',
+    score: '11 / 15',
+    verdict: 'mid',
+    found:
+      'Actually decent. The hero paragraph — "Create variants, schedule runs, and track daily impressions, clicks, CTR and position directly from Google Search Console" — is concrete, declarative and quotable, with no filler.',
+    fix:
+      'Little to fix. This was the strongest part of the page and it is the part most sites get worst.',
+  },
+  {
+    signal: 'Metadata hygiene',
+    score: '4 / 6',
+    verdict: 'mid',
+    found:
+      'Title 46 characters, description 152 characters — both comfortably in range. No canonical link in the markup. A meta keywords tag, which search engines have ignored since roughly 2009.',
+    fix:
+      'Add the canonical, delete the keywords tag. The keywords tag does no harm but it tells anyone technical that the page was built from a 2011 checklist.',
+  },
+  {
+    signal: 'Internal integrity',
+    score: 'not scored',
+    verdict: 'bad',
+    found:
+      'Eleven links pointing at "#" or nothing at all, including both hero call-to-action buttons, the log-in link, and the buttons on two of three pricing tiers. The footer linked to /docs/, /blog/, /guides/ and /support/, none of which had content.',
+    fix:
+      'This is not an AEO finding, it is the finding. A page whose primary conversion buttons go nowhere has no optimisation problem worth discussing.',
+  },
+];
+---
+<Base title={title} description={description} schema={[article]}>
+  <article>
+    <section class="section" style="padding-bottom: 1.5rem;">
+      <div class="wrap prose">
+        <p class="eyebrow">Teardown 01 · 30 July 2026 · subject: snippettester.com</p>
+        <h1>The first site we tore down was our own.</h1>
+        <p class="lede">
+          Before tearing down anyone else's site it seemed only fair to start with the one I am
+          responsible for. This domain used to host a SaaS product — an A/B testing tool for search
+          snippets. The product is discontinued. The landing page was still live, and it is a
+          textbook example of the gap between a page that reads well and a page a machine can use.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="stats">
+          <div class="stat">
+            <span class="stat__n">41/100</span>
+            <span class="stat__l">provisional AEO readiness score</span>
+            <span class="stat__s">estimated — see method note</span>
+          </div>
+          <div class="stat">
+            <span class="stat__n">0</span>
+            <span class="stat__l">structured data blocks, despite a full FAQ section</span>
+            <span class="stat__s">18 points unclaimed</span>
+          </div>
+          <div class="stat">
+            <span class="stat__n">11</span>
+            <span class="stat__l">links pointing at "#" or nothing</span>
+            <span class="stat__s">including both hero buttons</span>
+          </div>
+        </div>
+
+        <div class="prose" style="margin-top: 2.5rem;">
+          <h2>Why this page existed, and why it stopped</h2>
+          <p>
+            Snippet Tester was a tool for A/B testing titles and meta descriptions, reading
+            performance back from Google Search Console. It got as far as a working beta with OAuth,
+            scheduling and daily metric sync.
+          </p>
+          <p>
+            Then it failed its own assessment. Search Console already reports impressions, clicks,
+            CTR and position by page and by date. The tool put a scheduler on top of that and called
+            it a product. It did not do anything Google was not already doing for free, so it was
+            shelved — which was the right call and is worth stating plainly on a site that now sells
+            judgement about search.
+          </p>
+          <p>
+            The landing page, though, is a useful artefact. It was written carefully. The copy is
+            clear, the structure is logical, a human reads it without friction. And it was close to
+            invisible to an answer engine. Those two things are not in tension — that is the whole
+            problem the category exists to solve.
+          </p>
+        </div>
+
+        <h2 class="prose" style="margin-top: 3rem;">Finding by finding</h2>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th scope="col">Signal</th><th scope="col">Score</th><th scope="col">Verdict</th></tr>
+            </thead>
+            <tbody>
+              {findings.map((f) => (
+                <tr>
+                  <td><a href={`#${f.signal.toLowerCase().replace(/\s+/g, '-')}`}>{f.signal}</a></td>
+                  <td class="num">{f.score}</td>
+                  <td><span class={`badge badge--${f.verdict}`}>{f.verdict === 'ok' ? 'Pass' : f.verdict === 'mid' ? 'Partial' : 'Gap'}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {findings.map((f) => (
+          <div id={f.signal.toLowerCase().replace(/\s+/g, '-')} class="prose" style="border-top: 1px solid var(--rule); padding-top: 1.75rem; margin-top: 1.75rem;">
+            <h3 style="font-size: 1.25rem;">
+              <span class={`badge badge--${f.verdict}`} style="margin-right: 0.5rem; vertical-align: middle;">{f.score}</span>
+              {f.signal}
+            </h3>
+            <p><strong>What was there.</strong> {f.found}</p>
+            <p><strong>What I would change.</strong> {f.fix}</p>
+          </div>
+        ))}
+
+        <div class="prose" style="margin-top: 3rem;">
+          <h2>The lesson that generalises</h2>
+          <p>
+            The three worst scores on this page — no structured data, no tables, no cited figures —
+            all describe content that already existed in the wrong container. The FAQ was written. The
+            pricing comparison was written. They were just marked up as decoration instead of data.
+          </p>
+          <p>
+            That is the ordinary case. Most sites do not need more content, they need the content they
+            have to stop hiding. It is also why the free checker measures structure rather than
+            quality: quality is subjective and usually fine, structure is measurable and usually
+            broken.
+          </p>
+          <div class="callout">
+            <p>
+              <strong>Method note, and a caveat that matters.</strong> The findings above come from the
+              page as served on 30 July 2026, scored against the same eight signals as the free
+              checker. The observations are direct: the two H1s, the absent structured data, the zero
+              tables, the single statistic and the eleven dead links were all read off the page.
+            </p>
+            <p>
+              The <em>total</em> is a different matter. It was estimated by hand rather than produced by
+              the checker running against the raw HTML, so treat 41/100 as provisional and expect it to
+              move by a few points when re-run. Publishing a hand-estimated number as though a tool
+              produced it is precisely the habit this site exists to argue against, so it is labelled
+              rather than quietly rounded.
+            </p>
+            <p style="margin-bottom:0;">
+              Weighting follows the evidence rather than intuition: heading order tracks roughly
+              <a href="https://www.frase.io/blog/what-is-answer-engine-optimization-the-complete-guide-to-getting-cited-by-ai" rel="nofollow noopener" target="_blank">2.8x citation odds</a>,
+              structured data is <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6284518" rel="nofollow noopener" target="_blank">genuinely contested</a>,
+              and llms.txt is scored at zero because
+              <a href="https://ppc.land/llms-txt-adoption-rises-8-8x-but-97-of-files-get-zero-ai-requests/" rel="nofollow noopener" target="_blank">97% of those files are never requested</a>.
+              All of it is argued on <a href="/evidence">the evidence page</a>.
+            </p>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top: 2.5rem;">
+          <a class="btn btn--accent" href="/#checker">Score your own page</a>
+          <a class="btn btn--ghost" href="/contact?teardown=1">Submit a site for teardown</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>

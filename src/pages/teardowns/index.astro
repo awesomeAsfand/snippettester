@@ -1,0 +1,100 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const title = 'Teardowns';
+const description =
+  'Published site audits. Real pages, real scores, real fixes, in public. Including the first one: an audit of this domain that ended a product.';
+
+const teardowns = [
+  {
+    href: '/teardowns/auditing-our-own-abandoned-product',
+    date: '2026-07-30',
+    subject: 'snippettester.com (previous version)',
+    score: 41,
+    headline: 'The first site we tore down was our own',
+    blurb:
+      'The first teardown had to be our own. Two H1s, eleven dead links, no structured data, no tables, one statistic on the entire page — and a product that duplicated a free Google tool.',
+  },
+];
+
+const list = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Published teardowns',
+  itemListElement: teardowns.map((t, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://www.snippettester.com${t.href}`,
+    name: t.headline,
+  })),
+};
+---
+<Base title={title} description={description} schema={[list]}>
+  <section class="section" style="padding-bottom: 2rem;">
+    <div class="wrap prose">
+      <p class="eyebrow">Teardowns</p>
+      <h1>Audits published in full, including the unflattering ones.</h1>
+      <p class="lede">
+        A new agency has no case studies, which is a real problem — you have no way to judge whether I
+        can do this. Teardowns solve it without requiring anyone's permission: I audit a site properly,
+        publish the whole thing, and you decide from the work rather than the pitch.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="table-scroll" style="max-width: 52rem;">
+        <table>
+          <thead>
+            <tr><th scope="col">#</th><th scope="col">Subject</th><th scope="col">Date</th><th scope="col">Score</th><th scope="col">Worst signal</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="num">01</td>
+              <td><a href="/teardowns/auditing-our-own-abandoned-product">snippettester.com (previous version)</a></td>
+              <td class="num">2026-07-30</td>
+              <td class="num">41/100<span class="small" style="color:var(--muted)"> prov.</span></td>
+              <td>Structured data, 0/18</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="source-note" style="max-width: 52rem;">
+        Every teardown scores the same eight signals as the free checker, weighted by the evidence on
+        <a href="/evidence">the evidence page</a>: heading order correlates with roughly
+        <a href="https://www.frase.io/blog/what-is-answer-engine-optimization-the-complete-guide-to-getting-cited-by-ai" rel="nofollow noopener" target="_blank">2.8x citation odds</a>,
+        structured data is <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6284518" rel="nofollow noopener" target="_blank">contested</a>,
+        and AI Overview exposure varies from <a href="https://searchengineland.com/google-ai-overviews-ctr-recovery-study-475566" rel="nofollow noopener" target="_blank">89% of informational queries to 3-4% of transactional ones</a>.
+      </p>
+
+      <div class="stack" style="max-width: 52rem;">
+        {teardowns.map((t) => (
+          <article class="card card--flag">
+            <p class="eyebrow" style="margin-bottom: 0.5rem;">
+              {t.date} · provisional score <span class="num" style="color: var(--accent);">{t.score}/100</span>
+            </p>
+            <h2 style="font-size: 1.35rem;"><a href={t.href} style="text-decoration: none; color: var(--ink);">{t.headline}</a></h2>
+            <p class="small mono" style="color: var(--muted);">{t.subject}</p>
+            <p>{t.blurb}</p>
+            <p><a href={t.href}>Read the teardown →</a></p>
+          </article>
+        ))}
+
+        <div class="card" style="border-style: dashed;">
+          <h3>Your site could be next</h3>
+          <p>
+            Free, and the terms are plain: I publish the result whatever it says. If your site does
+            well that is useful to you and mildly inconvenient for me. If it does badly you get the fix
+            list anyway.
+          </p>
+          <p>
+            One condition — the site has to be real and in use. I am not tearing down staging
+            environments or side projects with no visitors.
+          </p>
+          <p><a class="btn btn--accent" href="/contact?teardown=1">Submit your site</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

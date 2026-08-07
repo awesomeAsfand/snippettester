@@ -1,0 +1,37 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  path: string;
+  schema?: unknown[];
+  noindex?: boolean;
+}
+const { title, description, path, schema = [], noindex = false } = Astro.props;
+const site = 'https://www.snippettester.com';
+const canonical = new URL(path, site).href;
+const fullTitle = path === '/' ? title : `${title} — Snippet Tester`;
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Snippet Tester" />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+
+<meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#12120F" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+{schema.map((node) => (
+  <script type="application/ld+json" set:html={JSON.stringify(node)} />
+))}

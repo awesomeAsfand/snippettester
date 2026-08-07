@@ -1,0 +1,28 @@
+---
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [
+  { href: '/websites', label: 'Builds' },
+  { href: '/services', label: 'Optimisation' },
+  { href: '/work', label: 'Work' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/evidence', label: 'Evidence' },
+];
+---
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/">
+      <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="2.5" y="4" width="19" height="6" rx="1.5" stroke="var(--accent)" />
+        <line x1="2.5" y1="14.5" x2="15" y2="14.5" />
+        <line x1="2.5" y1="19" x2="11" y2="19" />
+      </svg>
+      Snippet Tester
+    </a>
+    <nav class="nav" aria-label="Primary">
+      {links.map((l) => (
+        <a href={l.href} aria-current={path === l.href ? 'page' : undefined}>{l.label}</a>
+      ))}
+      <a class="btn btn--accent nav--keep" href="/#checker">Check a site</a>
+    </nav>
+  </div>
+</header>

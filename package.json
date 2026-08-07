@@ -1,0 +1,21 @@
+{
+  "name": "snippettester-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "dev:worker": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "test": "node selftest.mjs && node linkcheck.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^5.18.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

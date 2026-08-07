@@ -1,0 +1,103 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'About';
+const description =
+  'Snippet Tester is one person doing SEO and answer-engine work, arguing from published evidence rather than urgency. Here is the reasoning, and the conflict of interest.';
+---
+<Base title={title} description={description}>
+  <section class="section">
+    <div class="wrap prose">
+      <p class="eyebrow">About</p>
+      <h1>One person, an argument, and a stated conflict of interest.</h1>
+
+      <p class="lede">
+        Snippet Tester is a one-person practice. You are talking to the person who does the work,
+        which is the only real advantage a solo operator has and I would rather lead with it than
+        pretend to be a team.
+      </p>
+
+      <h2>Why the evidence-first angle</h2>
+      <p>
+        This domain used to host a product. It was a tool for A/B testing search snippets, and it got
+        to a working beta before I killed it — because Google Search Console already reported the same
+        numbers and my tool added a scheduler and a login screen. It solved nothing that was not
+        already solved for free.
+      </p>
+      <p>
+        Making that call taught me the thing this practice is built on. The search industry is full of
+        products and services that are technically real and practically pointless, and the only way to
+        tell them apart is to look for evidence and be willing to accept the answer. I applied that to
+        my own product and it failed. So the evidence base on this site is not a marketing device
+        bolted on afterwards — it is the same test, run on everything else in the category.
+        <a href="/teardowns/auditing-our-own-abandoned-product">The first teardown I published is of the old site</a>,
+        for the same reason.
+      </p>
+
+      <h2>What I actually believe about AI search</h2>
+      <p>
+        Compressed to four sentences, so you can disagree with it before contacting me.
+      </p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th scope="col">Position</th><th scope="col">Confidence</th><th scope="col">Basis</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AI chatbots are not meaningfully taking your traffic yet — all of them combined send about 0.29% of search referrals, against Google's 87.6%.</td>
+              <td><span class="badge badge--ok">High</span></td>
+              <td class="small"><a href="https://technologychecker.io/blog/search-engine-market-share" rel="nofollow noopener" target="_blank">Referral share data, July 2026</a></td>
+            </tr>
+            <tr>
+              <td>Google's own AI Overviews are taking your clicks, measurably, and that is the actual problem.</td>
+              <td><span class="badge badge--ok">High</span></td>
+              <td class="small"><a href="https://ahrefs.com/blog/ai-overviews-reduce-clicks/" rel="nofollow noopener" target="_blank">Ahrefs</a>, <a href="https://searchengineland.com/google-ai-overviews-ctr-recovery-study-475566" rel="nofollow noopener" target="_blank">Seer via Search Engine Land</a> — five studies, -15.5% to -61%</td>
+            </tr>
+            <tr>
+              <td>The fixes with evidence behind them are structural and editorial: answer first, facts in tables, figures cited, headings ordered.</td>
+              <td><span class="badge badge--mid">Moderate</span></td>
+              <td class="small"><a href="https://www.frase.io/blog/what-is-answer-engine-optimization-the-complete-guide-to-getting-cited-by-ai" rel="nofollow noopener" target="_blank">Correlational: +22% statistics, +37% quotations, 2.8x heading order</a></td>
+            </tr>
+            <tr>
+              <td>Much of what is sold as AEO — llms.txt files being the clearest case — has no measurable effect.</td>
+              <td><span class="badge badge--ok">High</span></td>
+              <td class="small"><a href="https://ppc.land/llms-txt-adoption-rises-8-8x-but-97-of-files-get-zero-ai-requests/" rel="nofollow noopener" target="_blank">97% zero requests across 137,000 domains</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        All four are argued with sources on <a href="/evidence">the evidence page</a>. If new research
+        contradicts one, it changes there and the date at the top moves.
+      </p>
+
+      <h2>The conflict of interest</h2>
+      <p>
+        I sell the services described on this site, which means I benefit from you believing AI search
+        matters. You should read everything here with that in mind. The specific way I try not to abuse
+        it: the free checker will tell you when your page is fine, the services page lists who should
+        not hire me, and the evidence page publishes findings against my own category. None of that
+        eliminates the bias. It just makes it checkable.
+      </p>
+
+      <h2>How this site is built</h2>
+      <p>
+        Static HTML generated by Astro, hosted on a CDN, no web fonts, no analytics scripts, no cookie
+        banner, no consent flow, nothing to consent to. The free checker runs as a single serverless
+        function that fetches your page and its robots.txt and scores eight signals with regular
+        expressions — no model, no API call, no per-run cost. That is why it is free and why it always
+        returns the same score for the same page.
+      </p>
+      <p>
+        It is also the argument. If someone wants to sell you page performance, the first evidence
+        should be their own.
+      </p>
+
+      <div class="btn-row" style="margin-top: 2rem;">
+        <a class="btn btn--accent" href="/#checker">Run the checker</a>
+        <a class="btn btn--ghost" href="mailto:hello@snippettester.com">hello@snippettester.com</a>
+      </div>
+    </div>
+  </section>
+</Base>

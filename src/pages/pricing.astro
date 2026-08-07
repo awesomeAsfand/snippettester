@@ -1,0 +1,197 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Pricing';
+const description =
+  'Published rates. Builds from $2,500 to $8,000 depending on size; optimisation at $750, $2,400 or $2,900 per month. Market context and who each is wrong for.';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does AEO cost in 2026?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Agency retainers for answer engine optimisation typically run $2,000 to $15,000 per month in 2026. Growth-stage engagements cluster at $3,000-$8,000 and enterprise scopes start near $15,000. Below roughly $1,500 per month you are generally buying rebranded SEO.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Why publish prices when most agencies do not?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Hidden pricing exists so the number can be adjusted to what a buyer looks like they can pay. Publishing one rate for everyone removes that, filters out mismatched enquiries before they reach the inbox, and is difficult to fake.',
+      },
+    },
+  ],
+};
+
+const rows = [
+  ['Snippet Tester essential build', '$2,500 - $4,000', 'Up to 5 pages, static, scored before launch'],
+  ['Snippet Tester standard build', '$4,000 - $8,000', '6-12 pages plus blog'],
+  ['Typical freelance small business site', '$2,000 - $8,000', 'US market, 2026'],
+  ['Typical 5-page brochure site, freelancer', '$3,000 - $6,000', '4-6 weeks'],
+  ['Boutique agency, same brief', '$8,000 - $15,000', 'Template-based'],
+  ['Custom build, small to mid-sized business', '$5,000 - $20,000', 'Bespoke design or functionality'],
+  ['Snippet Tester audit', '$750 one-off', 'Diagnosis only, whole site, 5 days'],
+  ['Snippet Tester sprint', '$2,400 one-off', 'Diagnosis plus implementation, 3-4 weeks'],
+  ['Snippet Tester retainer', '$2,900 / month', 'Rolling, no minimum term'],
+  ['Typical growth-stage agency', '$3,000 - $8,000 / month', 'Focused engagement, market rate'],
+  ['Typical mid-market agency', '$2,000 - $10,000 / month', 'Content, technical, multi-engine monitoring'],
+  ['Typical enterprise scope', '$15,000+ / month', 'Heavy off-site work'],
+  ['Anything under $1,500 / month', 'Below market', 'Generally rebranded SEO'],
+];
+---
+<Base title={title} description={description} schema={[schema]}>
+  <section class="section" style="padding-bottom: 2rem;">
+    <div class="wrap prose">
+      <p class="eyebrow">Pricing</p>
+      <h1>The rates are on the site. That is unusual, and it is deliberate.</h1>
+      <p class="lede">
+        In this category almost nobody publishes a number. The reason is that the number gets adjusted
+        to what the buyer looks like they can afford. One published rate removes that possibility, so
+        here it is.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <h2 class="prose">Website builds</h2>
+      <p class="prose">
+        Builds are quoted, not sold off a shelf — the number depends on page count and how much of the
+        copy you bring. The bands below are where projects land, and you get a fixed figure in writing
+        before anything starts. Every build includes the 90+ checker score in the contract.
+      </p>
+
+      <div class="grid grid--3" style="margin-top: 1.5rem;">
+        <div class="card">
+          <p class="eyebrow" style="margin-bottom: 0.3rem;">Essential build</p>
+          <span class="price">$2,500<small>-4,000</small></span>
+          <p class="small">Up to 5 pages · 3-4 weeks</p>
+          <p>Home, services, about, contact and one more. Static, schema, scored before launch. You supply the facts, we shape the copy.</p>
+          <p class="small"><strong>Wrong for you if</strong> you need a blog you update weekly.</p>
+          <p><a class="btn btn--ghost" href="/contact?plan=build-essential">Enquire</a></p>
+        </div>
+        <div class="card card--flag">
+          <p class="eyebrow" style="margin-bottom: 0.3rem;">Standard build</p>
+          <span class="price">$4,000<small>-8,000</small></span>
+          <p class="small">6-12 pages plus blog · 5-7 weeks</p>
+          <p>Everything above, plus a publishing setup, service or location pages, and copy structured page by page to answer specific questions.</p>
+          <p class="small"><strong>Wrong for you if</strong> you need e-commerce or user accounts.</p>
+          <p><a class="btn btn--accent" href="/contact?plan=build-standard">Enquire</a></p>
+        </div>
+        <div class="card">
+          <p class="eyebrow" style="margin-bottom: 0.3rem;">Rebuild after an audit</p>
+          <span class="price">Build price<small> less $750</small></span>
+          <p class="small">Audit fee credited in full</p>
+          <p>If the audit concludes your site cannot be optimised into shape, the $750 comes off the build. You never pay twice for the same diagnosis.</p>
+          <p class="small"><strong>Wrong for you if</strong> the audit says fixing is cheaper — which it usually does.</p>
+          <p><a class="btn btn--ghost" href="/contact?plan=rebuild">Enquire</a></p>
+        </div>
+      </div>
+
+      <h2 class="prose" style="margin-top: 3.5rem;">Optimising a site you already have</h2>
+      <p class="prose">
+        Fixed prices, because diagnosis and repair are predictable in a way that a build is not.
+      </p>
+
+      <div class="grid grid--3" style="margin-top: 1.5rem;">
+        <div class="card">
+          <p class="eyebrow" style="margin-bottom: 0.3rem;">Audit</p>
+          <span class="price">$750</span>
+          <p class="small">One-off · 5 working days</p>
+          <p>Full structural diagnosis of every template, your measured AI Overview exposure, and a prioritised fix list.</p>
+          <p class="small"><strong>Wrong for you if</strong> you already know what is broken and just need it done.</p>
+          <p><a class="btn btn--ghost" href="/contact?plan=audit">Enquire</a></p>
+        </div>
+        <div class="card card--flag">
+          <p class="eyebrow" style="margin-bottom: 0.3rem;">Sprint · most people want this</p>
+          <span class="price">$2,400</span>
+          <p class="small">One-off · 3-4 weeks</p>
+          <p>The audit plus the changes made: schema shipped, top 10 pages restructured, technical fixes live, before-and-after measured.</p>
+          <p class="small"><strong>Wrong for you if</strong> you publish weekly and need someone keeping pace.</p>
+          <p><a class="btn btn--accent" href="/contact?plan=sprint">Enquire</a></p>
+        </div>
+        <div class="card">
+          <p class="eyebrow" style="margin-bottom: 0.3rem;">Retainer</p>
+          <span class="price">$2,900<small>/mo</small></span>
+          <p class="small">Rolling · cancel any month</p>
+          <p>Four to six pages a month, citation monitoring across four engines, schema maintained, reporting that leads with failures.</p>
+          <p class="small"><strong>Wrong for you if</strong> your site is stable and small — buy the sprint once instead.</p>
+          <p><a class="btn btn--ghost" href="/contact?plan=retainer">Enquire</a></p>
+        </div>
+      </div>
+
+      <h2 class="prose" style="margin-top: 3.5rem;">How that compares to the market</h2>
+      <p class="prose">
+        Published survey data for 2026, so you can see where these rates sit rather than taking my
+        word for it.
+      </p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th scope="col">Option</th><th scope="col">Rate</th><th scope="col">Scope</th></tr></thead>
+          <tbody>
+            {rows.map(([a, b, c]) => (
+              <tr><td>{a}</td><td class="num">{b}</td><td class="small">{c}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="source-note">
+        Build market figures:
+        <a href="https://www.jim.com/blog/small-business-website-cost" rel="nofollow noopener" target="_blank">small business website cost survey 2026</a> and
+        <a href="https://projectcostestimator.com/freelance-website-cost" rel="nofollow noopener" target="_blank">freelance developer rate data</a>
+        (hourly $75-$150 for experienced designers).
+        Optimisation figures:
+        <a href="https://humanswith.ai/blog/what-aeo-and-geo-actually-cost-in-2026/" rel="nofollow noopener" target="_blank">HumansWith.ai</a>
+        and <a href="https://outreachbloom.com/aeo-geo-pricing-guide/" rel="nofollow noopener" target="_blank">Outreach Bloom</a> AEO/GEO pricing surveys, 2026.
+      </p>
+
+      <div class="callout" style="max-width: var(--measure);">
+        <p>
+          <strong>Being cheaper is not the pitch.</strong> These rates sit at the low end of the market
+          because I am one person with no overhead, not because the work is thinner. If you want a team,
+          account management and a Slack channel with five people in it, hire an agency — that is a real
+          thing to want and I cannot provide it.
+        </p>
+      </div>
+
+      <h2 class="prose" style="margin-top: 3rem;">Questions people ask before paying</h2>
+      <div class="stack prose" style="margin-top: 1.25rem;">
+        <div class="card">
+          <h3>Do you guarantee results?</h3>
+          <p>
+            No, and neither can anyone else. Rankings and AI citations are decided by systems no vendor
+            controls. What I guarantee is the deliverables list and that the measurement baseline is
+            yours to keep.
+          </p>
+        </div>
+        <div class="card">
+          <h3>What if the audit says my site is fine?</h3>
+          <p>
+            Then the audit says your site is fine, you have a document proving it, and I do not try to
+            sell you a sprint. This happens and it is a good outcome for both of us.
+          </p>
+        </div>
+        <div class="card">
+          <h3>What happens if a build misses the 90 score?</h3>
+          <p>
+            It does not launch until it clears. The threshold is in the contract, the tool is public,
+            and you can verify it yourself the day after handover. That is the whole reason the
+            checker is free rather than gated.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Why is the retainer rolling rather than a 6-month contract?</h3>
+          <p>
+            Because a minimum term protects the supplier, not you. If the work is producing something,
+            you will stay.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro';
+import { claims, lastReviewed, verdictCounts } from '../data/evidence.js';
+
+const title = 'The AEO evidence base';
+const description =
+  'Every popular claim about AI search and answer engine optimisation, scored against published research. Four of eight do not survive the data. Sources for each.';
+
+const faq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: claims.map((c) => ({
+    '@type': 'Question',
+    name: c.claim,
+    acceptedAnswer: { '@type': 'Answer', text: `${c.verdictLabel}. ${c.finding}` },
+  })),
+};
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'The AEO evidence base: eight claims, scored against the research',
+  description,
+  dateModified: lastReviewed,
+  author: { '@id': 'https://www.snippettester.com/#org' },
+  publisher: { '@id': 'https://www.snippettester.com/#org' },
+  mainEntityOfPage: 'https://www.snippettester.com/evidence',
+};
+---
+<Base title={title} description={description} schema={[faq, article]}>
+  <section class="section" style="padding-bottom: 1.5rem;">
+    <div class="wrap prose">
+      <p class="eyebrow">Reviewed {lastReviewed} · updated as studies land</p>
+      <h1>Eight claims the AEO industry makes. Here is what the research says.</h1>
+      <p class="lede">
+        Answer engine optimisation is roughly two years old as a product category and most of what is
+        sold under the name has never been measured. Below is every popular claim, the strongest
+        published evidence for and against it, and what we would actually do about it.
+        {verdictCounts.bad} of the {claims.length} do not survive.
+      </p>
+      <div class="btn-row" style="margin-top: 1.5rem;">
+        <a class="btn btn--accent" href="/#checker">Check your own page</a>
+        <a class="btn btn--ghost" href="/services">What we do about it</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 1.5rem;">
+    <div class="wrap">
+      <h2 class="prose">Summary table</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Claim</th>
+              <th scope="col">Verdict</th>
+              <th scope="col">Basis</th>
+            </tr>
+          </thead>
+          <tbody>
+            {claims.map((c, i) => (
+              <tr>
+                <td style="min-width: 16rem;"><a href={`#claim-${i + 1}`}>{c.claim}</a></td>
+                <td><span class={`badge badge--${c.verdict}`}>{c.verdictLabel}</span></td>
+                <td class="small">{c.source}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      {claims.map((c, i) => (
+        <article id={`claim-${i + 1}`} style="border-top: 1px solid var(--rule); padding-top: 2rem; margin-top: 2rem;">
+          <div class="prose">
+            <p class="eyebrow" style="margin-bottom: 0.6rem;">Claim {i + 1} of {claims.length}</p>
+            <h2 style="font-size: clamp(1.35rem, 2.6vw, 1.7rem);">
+              <span class={`badge badge--${c.verdict}`} style="vertical-align: middle; margin-right: 0.5rem;">{c.verdictLabel}</span>
+              &ldquo;{c.claim}&rdquo;
+            </h2>
+            <h3 style="font-family: var(--sans); font-size: 0.95rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 1.5rem;">What the data shows</h3>
+            <p>{c.finding}</p>
+            <h3 style="font-family: var(--sans); font-size: 0.95rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em;">So what should you do</h3>
+            <p>{c.soDoWhat}</p>
+            <p class="source-note">
+              Source: <a href={c.href} rel="nofollow noopener" target="_blank">{c.source}</a>
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap prose">
+      <h2>How this page is maintained</h2>
+      <p>
+        Claims move between verdicts when evidence changes, and the date at the top of the page moves
+        with them. If you have a study that contradicts something here, send it —
+        <a href="mailto:hello@snippettester.com">hello@snippettester.com</a>. A correction on this
+        page is worth more to us than being right.
+      </p>
+      <p>
+        Two things this page is not. It is not a literature review — where studies disagree we say so
+        rather than picking the flattering one. And it is not neutral about method: a finding from
+        server logs across 137,000 domains outranks a vendor blog post asserting the opposite, and we
+        will keep weighting it that way.
+      </p>
+    </div>
+  </section>
+</Base>

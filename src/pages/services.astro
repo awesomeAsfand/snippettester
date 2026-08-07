@@ -1,0 +1,181 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Services';
+const description =
+  'Two families of work: building sites that get found, and fixing ones that do not. Audit, fix-it sprint, retainer, and full builds. Each lists what it excludes.';
+
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'SEO and answer engine optimisation',
+  provider: { '@id': 'https://www.snippettester.com/#org' },
+  name: 'Evidence-led SEO and AEO',
+  description,
+  areaServed: { '@type': 'Place', name: 'Worldwide' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Engagements',
+    itemListElement: [
+      { '@type': 'Offer', name: 'Structural audit', price: '750', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Fix-it sprint', price: '2400', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Ongoing retainer', price: '2900', priceCurrency: 'USD' },
+    ],
+  },
+};
+---
+<Base title={title} description={description} schema={[service]}>
+  <section class="section" style="padding-bottom: 2rem;">
+    <div class="wrap prose">
+      <p class="eyebrow">Services</p>
+      <h1>Two families of work. No packages named after metals.</h1>
+      <p class="lede">
+        Either we fix the site you have, or we replace it. Everything below is scoped as deliverables
+        you can check off, not hours you cannot verify, and each one lists what it does not include —
+        usually the more useful half.
+      </p>
+      <p>
+        Build work lives on its own page: <a href="/websites">how we build websites</a>, and why
+        static beats WordPress when the reader is a machine. The three engagements below are for
+        sites that already exist.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="stack" style="max-width: 54rem;">
+
+        <div class="card">
+          <p class="eyebrow" style="margin-bottom: 0.4rem;">01 · one-off · 5 working days</p>
+          <h2 style="font-size: 1.5rem;">Structural audit</h2>
+          <span class="price">$750 <small>fixed</small></span>
+          <p>
+            The full version of what the free checker gestures at, done by hand across your whole
+            site rather than one page. You get a document you could hand to any developer.
+          </p>
+          <h4>You get</h4>
+          <ul class="quiet-list">
+            <li>Every template audited for structure, schema, heading order and extractability</li>
+            <li>Your actual AI Overview exposure measured from Search Console — which queries, how much traffic, informational versus transactional split</li>
+            <li>Crawl and rendering check: what a crawler sees versus what a browser sees</li>
+            <li>A prioritised fix list, each item with the reasoning and the expected size of effect</li>
+            <li>A 45-minute call to argue with the findings</li>
+          </ul>
+          <h4>Not included</h4>
+          <ul class="quiet-list no-list">
+            <li>Implementation — this is diagnosis</li>
+            <li>Content writing</li>
+            <li>Keyword research as a standalone deliverable</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <p class="eyebrow" style="margin-bottom: 0.4rem;">02 · one-off · 3-4 weeks</p>
+          <h2 style="font-size: 1.5rem;">Fix-it sprint</h2>
+          <span class="price">$2,400 <small>fixed</small></span>
+          <p>
+            The audit, then the changes actually made. Most sites do not need an ongoing relationship
+            — they need a backlog cleared once by someone who knows which items matter.
+          </p>
+          <h4>You get</h4>
+          <ul class="quiet-list">
+            <li>Everything in the audit</li>
+            <li>Schema implemented and validated across every template</li>
+            <li>Your top 10 pages restructured answer-first: opening rewritten, headings resequenced, key facts moved into tables</li>
+            <li>Technical fixes shipped — metadata, canonicals, robots rules, crawl waste, render-blocking</li>
+            <li>Before-and-after measurement, and a baseline you can keep tracking without me</li>
+          </ul>
+          <h4>Not included</h4>
+          <ul class="quiet-list no-list">
+            <li>New content production at volume</li>
+            <li>Link building</li>
+            <li>Anything requiring a rebuild of your CMS</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <p class="eyebrow" style="margin-bottom: 0.4rem;">03 · monthly · 30-day rolling</p>
+          <h2 style="font-size: 1.5rem;">Ongoing retainer</h2>
+          <span class="price">$2,900 <small>/ month</small></span>
+          <p>
+            For sites where content ships continuously and the structural work has to keep up. Rolling
+            monthly, no minimum term. If a month produces nothing worth reporting I will tell you and
+            suggest pausing.
+          </p>
+          <h4>You get</h4>
+          <ul class="quiet-list">
+            <li>Four to six pages produced or rebuilt per month, written answer-first</li>
+            <li>Citation and visibility monitoring across Google AI Overviews, ChatGPT, Perplexity and Copilot</li>
+            <li>Schema maintained as templates change</li>
+            <li>A monthly report that leads with what did not work</li>
+            <li>Direct access — you are talking to the person doing the work</li>
+          </ul>
+          <h4>Not included</h4>
+          <ul class="quiet-list no-list">
+            <li>Paid media</li>
+            <li>Social or email marketing</li>
+            <li>Guaranteed rankings or guaranteed citations — nobody can honestly sell those</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-style: dashed;">
+          <p class="eyebrow" style="margin-bottom: 0.4rem;">04 · when fixing is the wrong answer</p>
+          <h2 style="font-size: 1.5rem;">Rebuild</h2>
+          <p>
+            Some sites cannot be optimised into shape. A client-rendered React site serves crawlers an
+            empty shell; a theme with fifteen plugins carries more overhead than content. In those
+            cases the honest recommendation is replacement, and the audit fee comes off the build.
+          </p>
+          <p><a href="/websites">How we build websites →</a></p>
+        </div>
+      </div>
+
+      <h2 class="prose" style="margin-top: 3.5rem;">Side by side</h2>
+      <div class="table-scroll" style="max-width: 54rem;">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">&nbsp;</th>
+              <th scope="col">Audit</th>
+              <th scope="col">Sprint</th>
+              <th scope="col">Retainer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Price</th><td class="num">$750</td><td class="num">$2,400</td><td class="num">$2,900/mo</td></tr>
+            <tr><th scope="row">Turnaround</th><td>5 working days</td><td>3-4 weeks</td><td>Rolling monthly</td></tr>
+            <tr><th scope="row">Templates audited</th><td>All</td><td>All</td><td>All, re-checked monthly</td></tr>
+            <tr><th scope="row">AI Overview exposure measured</th><td>Yes</td><td>Yes</td><td>Tracked continuously</td></tr>
+            <tr><th scope="row">Schema implemented</th><td>No — specified only</td><td>Yes, all templates</td><td>Yes, maintained</td></tr>
+            <tr><th scope="row">Pages restructured</th><td>0</td><td>10</td><td>4-6 per month</td></tr>
+            <tr><th scope="row">Citation monitoring</th><td>No</td><td>Baseline only</td><td>4 engines, ongoing</td></tr>
+            <tr><th scope="row">Minimum term</th><td>n/a</td><td>n/a</td><td>None</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="source-note" style="max-width: 54rem;">
+        For context on the rates: AEO retainers surveyed at
+        <a href="https://humanswith.ai/blog/what-aeo-and-geo-actually-cost-in-2026/" rel="nofollow noopener" target="_blank">$2,000-$15,000 per month in 2026</a>,
+        and <a href="https://outreachbloom.com/aeo-geo-pricing-guide/" rel="nofollow noopener" target="_blank">anything under $1,500 is generally rebranded SEO</a>.
+        The 3-4% AI Overview trigger rate on transactional queries is from
+        <a href="https://searchengineland.com/google-ai-overviews-ctr-recovery-study-475566" rel="nofollow noopener" target="_blank">aggregated 2026 trigger-rate analysis</a>.
+      </p>
+
+      <div class="callout" style="max-width: 54rem;">
+        <p>
+          <strong>Who should not hire me.</strong> If your site scores above 80 on the free checker,
+          the remaining structural gains are small and you would be paying me to polish. If your
+          traffic is almost entirely transactional queries, AI Overviews trigger on 3-4% of those and
+          your exposure is minimal. And if you need volume content production more than structural
+          work, a writer is better value than an auditor.
+        </p>
+      </div>
+
+      <div class="btn-row" style="margin-top: 2rem;">
+        <a class="btn btn--accent" href="/#checker">Start with the free check</a>
+        <a class="btn btn--ghost" href="/contact">Ask about an engagement</a>
+      </div>
+    </div>
+  </section>
+</Base>

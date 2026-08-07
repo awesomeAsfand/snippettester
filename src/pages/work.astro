@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Work';
+const description =
+  'One exhibit, not hidden: this website. Built the way we build client sites, scored by our own public checker, source inspectable. Plus the teardown of what stood here before.';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Work',
+  description,
+  isPartOf: { '@id': 'https://www.snippettester.com/#website' },
+};
+---
+<Base title={title} description={description} schema={[schema]}>
+  <section class="section" style="padding-bottom: 2rem;">
+    <div class="wrap prose">
+      <p class="eyebrow">Work</p>
+      <h1>One exhibit. Here is why it is not hidden behind a stock photo grid.</h1>
+      <p class="lede">
+        This practice is new, so the portfolio is one item long. Padding it with mockups, unbuilt
+        concepts or client logos from other people's projects would be the ordinary move and it would
+        undermine the only thing being sold here. So: one real site, measurable, with the source open.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="card card--flag" style="max-width: 52rem;">
+        <p class="eyebrow" style="margin-bottom: 0.5rem;">Exhibit 01 · live · source inspectable</p>
+        <h2 style="font-size: 1.6rem;">This website</h2>
+        <p>
+          Built exactly the way a client build is built — static HTML from Astro, schema on every
+          page, answer-first copy, no web fonts, no analytics, no cookie banner. Its homepage scores 91 on the
+          checker linked in its own header, and no page here scores below 76. You can run that check yourself right now, which is the
+          entire point of publishing the tool.
+        </p>
+      </div>
+
+      <div class="table-scroll" style="max-width: 52rem;">
+        <table>
+          <thead>
+            <tr><th scope="col">Measure</th><th scope="col">This site</th><th scope="col">Typical small business site</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">AEO checker score</th><td class="num">91/100</td><td class="num">40-65</td></tr>
+            <tr><th scope="row">Largest page, HTML</th><td class="num">24 KB</td><td class="num">80-250 KB</td></tr>
+            <tr><th scope="row">CSS</th><td class="num">10 KB</td><td class="num">150-600 KB</td></tr>
+            <tr><th scope="row">Web fonts</th><td class="num">0</td><td class="num">2-6</td></tr>
+            <tr><th scope="row">JavaScript required to read content</th><td>None</td><td>Often all of it</td></tr>
+            <tr><th scope="row">Third-party trackers</th><td class="num">0</td><td class="num">4-20</td></tr>
+            <tr><th scope="row">Cookie consent flow</th><td>Not needed</td><td>Required</td></tr>
+            <tr><th scope="row">Monthly hosting</th><td class="num">$0</td><td class="num">$15-90</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="source-note" style="max-width: 52rem;">
+        Comparison figures are typical ranges rather than a controlled study — treat them as
+        indicative. The left column is measurable: run
+        <a href="/#checker">the checker</a> against any page here, or read the source. Page weight
+        matters because
+        <a href="https://www.wislr.com/articles/ai-bot-behavior-log-analysis" rel="nofollow noopener" target="_blank">AI crawlers fetch JavaScript as text without executing it</a>,
+        so anything rendered client-side is invisible to them regardless of how it looks in a browser.
+      </p>
+
+      <div class="prose" style="margin-top: 3rem;">
+        <h2>Exhibit 02: the before</h2>
+        <p>
+          The same domain used to host a failed SaaS product. Rather than quietly deleting it, the
+          old landing page was audited in public and the findings published — two H1s, no structured
+          data despite a full FAQ section, zero tables, one statistic on the entire page, and eleven
+          links pointing at nothing.
+        </p>
+        <p>
+          It is the most useful thing in this portfolio, because it is a documented before and after
+          on a single domain, and because the subject cannot complain.
+        </p>
+        <p><a href="/teardowns/auditing-our-own-abandoned-product">Read teardown 01 →</a></p>
+      </div>
+
+      <div class="callout" style="max-width: 52rem;">
+        <p>
+          <strong>Wanted: the first three client builds.</strong> New practice, thin portfolio, and
+          the honest way to fix that is to trade. The first three builds go at a reduced rate in
+          exchange for permission to publish the whole thing — the before score, the decisions, the
+          after score, and anything that went wrong.
+        </p>
+        <p style="margin-bottom: 0;">
+          <a class="btn btn--accent" href="/contact?first-build=1">Ask about a first build</a>
+        </p>
+      </div>
+
+      <div class="prose" style="margin-top: 2.5rem;">
+        <h2>What is deliberately missing</h2>
+        <ul class="quiet-list">
+          <li>Client logos. There are no clients yet, and borrowed logos from freelance work elsewhere would be dishonest here.</li>
+          <li>Design mockups. Anyone can produce a beautiful image of a site that was never built and never measured.</li>
+          <li>Testimonials. Same reason.</li>
+        </ul>
+        <p>
+          This page gets longer as work gets done. Until then it is short, and the shortness is
+          accurate information about how new this is.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

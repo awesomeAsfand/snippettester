@@ -1,0 +1,240 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Website builds';
+const description =
+  'We build small business websites with a findability guarantee: every site scores 90+ on our own public checker, written into the contract. Static, fast, no WordPress.';
+
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Website design and development',
+  provider: { '@id': 'https://www.snippettester.com/#org' },
+  name: 'Website builds with a findability guarantee',
+  description,
+  areaServed: { '@type': 'Place', name: 'Worldwide' },
+};
+
+const faq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Why build a static site instead of WordPress?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AI crawlers do not execute JavaScript. Analysis of over 500 million GPTBot fetches found zero evidence of JavaScript execution, and ClaudeBot and PerplexityBot fetch JavaScript files as text without running them. A static site serves finished HTML, so every crawler sees the whole page. It is also faster, cheaper to host and has no plugin surface to be hacked through.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the findability guarantee?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Every site we build scores 90 or above on our own public AEO checker before it goes live, and that threshold is written into the contract. The tool is free and public, so you can verify the claim yourself rather than take our word for it.',
+      },
+    },
+  ],
+};
+---
+<Base title={title} description={description} schema={[service, faq]}>
+  <section class="section" style="padding-bottom: 2rem;">
+    <div class="wrap prose">
+      <p class="eyebrow">Website builds</p>
+      <h1>We do not sell websites. We sell websites that get found.</h1>
+      <p class="lede">
+        Any designer can make something that looks good. The question nobody answers before you pay is
+        whether search engines and AI assistants can actually read it. So we answer it in writing:
+        every site we build scores 90 or above on our own public checker before it goes live, and that
+        number is in the contract.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--accent" href="/#checker">Score your current site first</a>
+        <a class="btn btn--ghost" href="/work">See what we have built</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="prose">
+        <p class="eyebrow">The reason this matters</p>
+        <h2>Most modern websites are invisible to AI crawlers, and their owners have no idea</h2>
+        <p>
+          This is the single most expensive thing we find, and it is invisible from the outside — the
+          site looks perfect in your browser. The problem only appears when something that is not a
+          browser tries to read it.
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">How the site is built</th>
+              <th scope="col">What a person sees</th>
+              <th scope="col">What GPTBot or ClaudeBot sees</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Static HTML (what we build)</td>
+              <td>The full page</td>
+              <td>The full page</td>
+            </tr>
+            <tr>
+              <td>Server-rendered WordPress</td>
+              <td>The full page</td>
+              <td>The full page, usually with 400 KB of plugin overhead</td>
+            </tr>
+            <tr>
+              <td>Client-rendered React, Vue or Angular</td>
+              <td>The full page</td>
+              <td>An empty shell — a loading div and a script tag</td>
+            </tr>
+            <tr>
+              <td>Wix or Squarespace with heavy JS blocks</td>
+              <td>The full page</td>
+              <td>Partial content, varies by block</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <blockquote style="max-width: var(--measure);">
+        <p>
+          Analysis of over 500 million GPTBot fetches found zero evidence of JavaScript execution.
+          GPTBot, ClaudeBot and PerplexityBot fetch JavaScript files as text but do not run them.
+        </p>
+        <cite>Vercel and Oncrawl crawler analyses, 2026</cite>
+      </blockquote>
+      <p class="source-note" style="max-width: var(--measure);">
+        Corroborated by
+        <a href="https://www.wislr.com/articles/ai-bot-behavior-log-analysis" rel="nofollow noopener" target="_blank">48 days of server-log analysis across 19 bots</a>
+        and <a href="https://www.digitalapplied.com/blog/agentic-crawler-behavior-30-day-site-log-study" rel="nofollow noopener" target="_blank">a 30-day agentic crawler study</a>.
+        The same logs show all four major AI crawlers respect robots.txt, and that GPTBot and ClaudeBot
+        began consuming sitemaps in March 2026.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="prose">
+        <p class="eyebrow">What you get</p>
+        <h2>Built the boring way, on purpose</h2>
+        <p>
+          There is nothing clever in the stack. Every choice below is made for the same reason: a
+          machine reading your page should get everything, immediately, without running any code.
+        </p>
+      </div>
+
+      <div class="grid grid--2" style="margin-top: 2rem;">
+        <div class="card card--flag">
+          <h3>Static HTML, generated by Astro</h3>
+          <p>
+            Finished pages served straight from a CDN. Nothing renders in the browser, so nothing is
+            hidden from a crawler. This site is built the same way — 24 KB of HTML, 10 KB of CSS, no
+            web fonts.
+          </p>
+        </div>
+        <div class="card card--flag">
+          <h3>Schema markup from day one</h3>
+          <p>
+            Organization or LocalBusiness on every page, plus the content type each page actually is.
+            Not retrofitted later at audit prices.
+          </p>
+        </div>
+        <div class="card card--flag">
+          <h3>Copy structured to be quoted</h3>
+          <p>
+            Answer-first openings, sequential headings, facts in tables rather than paragraphs. The
+            editorial work that correlates with citation, done while writing rather than after.
+          </p>
+        </div>
+        <div class="card card--flag">
+          <h3>Hosting that costs nothing</h3>
+          <p>
+            Cloudflare Pages free tier handles ordinary small business traffic without a bill. No
+            monthly hosting fee, no plugin licences, no maintenance retainer unless you want one.
+          </p>
+        </div>
+        <div class="card card--flag">
+          <h3>No cookie banner</h3>
+          <p>
+            Because there are no cookies. No analytics scripts by default, nothing to consent to,
+            no consent flow to build or maintain.
+          </p>
+        </div>
+        <div class="card card--flag">
+          <h3>The score, before launch</h3>
+          <p>
+            Your site runs through the public checker before it goes live. Below 90, it is not
+            finished. You can run the same check yourself the day after launch.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="prose">
+        <p class="eyebrow">Honest limits</p>
+        <h2>What we do not build</h2>
+        <p>
+          This is a narrow service and staying narrow is what makes the guarantee possible. If you
+          need any of the following, we are the wrong choice and will say so on the first email.
+        </p>
+      </div>
+      <div class="grid grid--2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3>Not a design studio</h3>
+          <p>
+            You get clean, fast, restrained design. If you need brand identity work, illustration or
+            an award-winning art direction, hire a designer and we will build what they give us.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Not e-commerce</h3>
+          <p>
+            Carts, inventory, payments and returns are a different discipline. Shopify does it better
+            than a custom build will.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Not web applications</h3>
+          <p>
+            User accounts, dashboards, booking systems with real logic. Static sites are the wrong
+            tool and pretending otherwise is how projects go wrong.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Not a CMS you edit daily</h3>
+          <p>
+            Content updates come through us, or through a lightweight editor we connect. If you need
+            five people publishing daily, WordPress is genuinely the better answer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>How a build runs</h2>
+      <ul class="quiet-list">
+        <li><strong>Check first.</strong> We run your current site through the checker and tell you whether you need a rebuild at all. Sometimes the answer is no and the fix-it sprint is cheaper.</li>
+        <li><strong>Structure before design.</strong> Pages, headings and what each page is meant to answer, agreed before anything is drawn.</li>
+        <li><strong>Copy shaped to be quoted.</strong> You supply the facts, we shape them — answer first, then detail, with the comparisons in tables.</li>
+        <li><strong>Build and score.</strong> Static build, schema, metadata. The checker runs before launch and the score goes in the handover.</li>
+        <li><strong>Handover.</strong> You get the repository. No lock-in, no proprietary platform, nothing that stops another developer picking it up.</li>
+      </ul>
+      <div class="btn-row" style="margin-top: 2rem;">
+        <a class="btn btn--accent" href="/pricing">See build pricing</a>
+        <a class="btn btn--ghost" href="/contact">Ask about a build</a>
+      </div>
+    </div>
+  </section>
+</Base>

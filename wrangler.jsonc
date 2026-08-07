@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "snippettester",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-08-01",
+
+  // Static site output from `astro build`. Cloudflare serves these directly
+  // and only falls through to worker/index.js when nothing matches.
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}
